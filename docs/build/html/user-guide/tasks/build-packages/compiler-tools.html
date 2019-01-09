@@ -1,0 +1,674 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="ko" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ko" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Anaconda compiler tools &mdash; Conda   documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+    <link rel="index" title="색인" href="../../../genindex.html" />
+    <link rel="search" title="검색" href="../../../search.html" />
+    <link rel="next" title="Adding Windows Start menu items" href="add-win-start-menu-items.html" />
+    <link rel="prev" title="Using shared libraries" href="use-shared-libraries.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Conda
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                 
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">사용자 설명서</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../overview.html">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../concepts.html">Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting-started.html">conda 시작하기</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install/index.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Tasks</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../manage-conda.html">Managing conda</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manage-environments.html">Managing environments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manage-channels.html">Managing channels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../create-custom-channels.html">Creating custom channels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../manage-pkgs.html">Managing packages</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Building packages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="install-conda-build.html">Installing and updating conda build</a></li>
+<li class="toctree-l4"><a class="reference internal" href="package-spec.html">Conda package specification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="package-naming-conv.html">Package naming conventions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="recipe.html">Conda build recipes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define-metadata.html">Defining metadata (meta.yaml)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="build-scripts.html">Build scripts (build.sh, bld.bat)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="features.html">Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="environment-variables.html">Environment variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="make-relocatable.html">Making packages relocatable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="link-scripts.html">Adding pre-link, post-link and pre-unlink scripts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="variants.html">Build Variants</a></li>
+<li class="toctree-l4"><a class="reference internal" href="use-shared-libraries.html">Using shared libraries</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Anaconda compiler tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="add-win-start-menu-items.html">Adding Windows Start menu items</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sample-recipes.html">Sample recipes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="build-without-recipe.html">Building a package without a recipe (bdist_conda)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wheel-files.html">Using wheel files with conda</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../manage-python.html">Managing Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../use-conda-with-travis-ci.html">Using conda with Travis CI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../view-command-line-help.html">Viewing command-line help</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../cheatsheet.html">Cheat sheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../help-support.html">도움말과 지원</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release-notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../commands.html">Command reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">Conda license</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Conda</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">사용자 설명서</a> &raquo;</li>
+        
+          <li><a href="../index.html">Tasks</a> &raquo;</li>
+        
+          <li><a href="index.html">Building packages</a> &raquo;</li>
+        
+      <li>Anaconda compiler tools</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/conda/conda-docs/blob/master/docs/source/user-guide/tasks/build-packages/compiler-tools.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="anaconda-compiler-tools">
+<h1>Anaconda compiler tools<a class="headerlink" href="#anaconda-compiler-tools" title="제목 주소">¶</a></h1>
+<p>Anaconda 5.0 switched from OS-provided compiler tools to our own toolsets. This
+allows improved compiler capabilities, including better security and
+performance. This page describes how to use these tools and enable these
+benefits.</p>
+<div class="section" id="compiler-packages">
+<h2>Compiler packages<a class="headerlink" href="#compiler-packages" title="제목 주소">¶</a></h2>
+<p>Before Anaconda 5.0, compilers were installed using system tools such as XCode
+or <code class="docutils literal notranslate"><span class="pre">yum</span> <span class="pre">install</span> <span class="pre">gcc</span></code>. Now there are conda packages for Linux and macOS
+compilers. Unlike the previous gcc 4.8.5 packages that included gcc, g++ and
+gfortran all in the same package, these conda packages are split into separate
+compilers:</p>
+<p>Linux:</p>
+<ul class="simple">
+<li>gcc_linux-64</li>
+<li>gxx_linux-64</li>
+<li>gfortran_linux-64</li>
+</ul>
+<p>macOS:</p>
+<ul class="simple">
+<li>clang_osx-64</li>
+<li>clangxx_osx-64</li>
+<li>gfortran_osx-64</li>
+</ul>
+<p>A compiler's &quot;build platform&quot; is the platform where the compiler runs and
+builds the code.</p>
+<p>A compiler's &quot;host platform&quot; is the platform where the built code will finally
+be hosted and run.</p>
+<p>Notice that all of these package names end in a platform identifier which
+specifies the host platform. All compiler packages are specific to both the
+build platform and the host platform.</p>
+</div>
+<div class="section" id="using-the-compiler-packages">
+<h2>Using the compiler packages<a class="headerlink" href="#using-the-compiler-packages" title="제목 주소">¶</a></h2>
+<p>The compiler packages can be installed with conda. Because they are designed
+with (pseudo) cross-compiling in mind, all of the executables in a compiler
+package are &quot;prefixed.&quot; Instead of <code class="docutils literal notranslate"><span class="pre">gcc</span></code>, the executable name of the compiler
+you use will be something like <code class="docutils literal notranslate"><span class="pre">x86_64-conda_cos6-linux-gnu-gcc</span></code>. These full
+compiler names are shown in the build logs, recording the host platform and
+helping prevent the common mistake of using the wrong compiler.</p>
+<p>Many build tools such as <code class="docutils literal notranslate"><span class="pre">make</span></code> and <code class="docutils literal notranslate"><span class="pre">cmake</span></code> search by default for a
+compiler named simply <code class="docutils literal notranslate"><span class="pre">gcc</span></code>, so we set environment variables to point these
+tools to the correct compiler.</p>
+<p>We set these variables in conda <code class="docutils literal notranslate"><span class="pre">activate.d</span></code> scripts, so any environment in
+which you will use the compilers must first be activated so the scripts will
+run. Conda-build does this activation for you using activation hooks installed
+with the compiler packages in <code class="docutils literal notranslate"><span class="pre">CONDA_PREFIX/etc/conda/activate.d</span></code>, so no
+additional effort is necessary.</p>
+<p>You can activate the root environment with the command <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">activate</span> <span class="pre">root</span></code>.</p>
+</div>
+<div class="section" id="macos-sdk">
+<h2>macOS SDK<a class="headerlink" href="#macos-sdk" title="제목 주소">¶</a></h2>
+<p>The macOS compilers require the macOS 10.9 SDK. The SDK license prevents it
+from being bundled in the conda package.</p>
+<p>We know of two current sources for the macOS 10.9 SDK:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/devernay/xcodelegacy">https://github.com/devernay/xcodelegacy</a></li>
+<li><a class="reference external" href="https://github.com/phracker/MacOSX-SDKs">https://github.com/phracker/MacOSX-SDKs</a></li>
+</ul>
+<p>We usually install this SDK at <code class="docutils literal notranslate"><span class="pre">/opt/MacOSX10.9.sdk</span></code> but you may install it
+anywhere.</p>
+<p>Edit your <code class="docutils literal notranslate"><span class="pre">conda_build_config.yaml</span></code> file to point to it, like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CONDA_BUILD_SYSROOT</span><span class="p">:</span>
+  <span class="o">-</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">MacOSX10</span><span class="o">.</span><span class="mf">9.</span><span class="n">sdk</span>        <span class="c1"># [osx]</span>
+</pre></div>
+</div>
+<p>At Anaconda we have this configuration setting in a centralized
+<code class="docutils literal notranslate"><span class="pre">conda_build_config.yaml</span></code> at the root of our recipe repository. Since we run
+build commands from that location, the file and the setting are used for all
+recipes.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">conda_build_config.yaml</span></code> search order is described further at
+<a class="reference internal" href="variants.html#conda-build-variant-config-files"><span class="std std-ref">Creating conda-build variant config files</span></a>.</p>
+</div>
+<div class="section" id="backward-compatibility">
+<h2>Backward compatibility<a class="headerlink" href="#backward-compatibility" title="제목 주소">¶</a></h2>
+<p>Some users want to use the latest Anaconda packages but do not yet want to use
+the Anaconda compilers. To enable this, the latest Python package builds have
+a default <code class="docutils literal notranslate"><span class="pre">_sysconfigdata</span></code> file. This file sets the compilers provided by the
+system, such as <code class="docutils literal notranslate"><span class="pre">gcc</span></code> and <code class="docutils literal notranslate"><span class="pre">g++</span></code>, as the default compilers. This way legacy
+recipes will keep working.</p>
+<p>Python packages also include an alternative <code class="docutils literal notranslate"><span class="pre">_sysconfigdata</span></code> file that sets
+the Anaconda compilers as the default compilers. The Anaconda Python executable
+itself is made with these Anaconda compilers.</p>
+<p>The compiler packages set the environment variable
+<code class="docutils literal notranslate"><span class="pre">_PYTHON_SYSCONFIGDATA_NAME</span></code>, which tells Python which <code class="docutils literal notranslate"><span class="pre">_sysconfigdata</span></code> file
+to use. This variable is set at activation time using the activation hooks
+described above.</p>
+<p>The new <code class="docutils literal notranslate"><span class="pre">_sysconfigdata</span></code> customization system is only present in recent
+versions of the Python package. Conda-build automatically tries to use the
+latest Python version available in the currently configured channels, which
+normally gets the latest from the default channel. If you're using something
+other than conda-build while working with the new compilers, conda does not
+automatically update Python, so make sure you have the correct
+<code class="docutils literal notranslate"><span class="pre">_sysconfigdata</span></code> files by updating your Python package manually.</p>
+</div>
+<div class="section" id="anaconda-compilers-and-conda-build-3">
+<h2>Anaconda compilers and conda-build 3<a class="headerlink" href="#anaconda-compilers-and-conda-build-3" title="제목 주소">¶</a></h2>
+<p>The Anaconda 5.0 compilers and conda-build 3 are designed to work together.</p>
+<p>Conda-build 3 defines a special jinja2 function, <code class="docutils literal notranslate"><span class="pre">compiler()</span></code>, to make it
+easy to specify compiler packages dynamically on many platforms. The
+<code class="docutils literal notranslate"><span class="pre">compiler</span></code> function takes at least one argument, the language of the compiler
+to use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">requirements</span><span class="p">:</span>
+  <span class="n">build</span><span class="p">:</span>
+    <span class="o">-</span> <span class="p">{{</span> <span class="n">compiler</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span> <span class="p">}}</span>
+</pre></div>
+</div>
+<p>&quot;Cross-capable&quot; recipes can be used to make packages with a host platform
+different than the build platform where conda-build runs. To write cross-capable
+recipes you may also need to use the &quot;host&quot; section in the requirements
+section. In this example we set &quot;host&quot; to &quot;zlib&quot; to tell conda-build to use
+the zlib in the conda environment and not the system zlib. This makes sure
+conda-build uses the zlib for the host platform and not the zlib for the build
+platform.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">requirements</span><span class="p">:</span>
+  <span class="n">build</span><span class="p">:</span>
+    <span class="o">-</span> <span class="p">{{</span> <span class="n">compiler</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span> <span class="p">}}</span>
+  <span class="n">host</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">zlib</span>
+</pre></div>
+</div>
+<p>Generally the build section should include compilers and other build tools, and
+the host section should include everything else, including shared libraries,
+Python, and Python libraries.</p>
+</div>
+<div class="section" id="customizing-the-compilers">
+<h2>Customizing the compilers<a class="headerlink" href="#customizing-the-compilers" title="제목 주소">¶</a></h2>
+<p>The compiler packages listed above are small packages that only include the
+activation scripts and list most of the software they provide as runtime
+dependencies.</p>
+<p>This design is intended to make it easy for you to customize your own compiler
+packages by copying these recipes and changing the flags. You can then edit the
+<code class="docutils literal notranslate"><span class="pre">conda_build_config.yaml</span></code> file to specify your own packages.</p>
+<p>We have been careful to select good, general purpose, secure and fast flags.
+We have also used them for all packages in Anaconda Distribution 5.0.0, except
+for some minor customizations in a few recipes. When changing these flags,
+remember that choosing the wrong flags can reduce security, reduce performance
+and cause incompatibilities.</p>
+<p>With that warning in mind, let's look at good ways to customize clang.</p>
+<ol class="arabic">
+<li><p class="first">Download or fork the code from <a class="reference external" href="https://github.com/anacondarecipes/aggregate">https://github.com/anacondarecipes/aggregate</a> .
+The clang package recipe is in the clang folder. The main material is in the
+llvm-compilers-feedstock folder.</p>
+</li>
+<li><p class="first">Edit <code class="docutils literal notranslate"><span class="pre">clang/recipe/meta.yaml</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">package</span><span class="p">:</span>
+  <span class="n">name</span><span class="p">:</span> <span class="n">clang_</span><span class="p">{{</span> <span class="n">target_platform</span> <span class="p">}}</span>
+  <span class="n">version</span><span class="p">:</span> <span class="p">{{</span> <span class="n">version</span> <span class="p">}}</span>
+</pre></div>
+</div>
+<p>The name here does not matter but the output names below do. Conda-build
+expects any compiler to follow the BASENAME_PLATFORMNAME pattern, so it is
+important to keep the <code class="docutils literal notranslate"><span class="pre">{{target_platform}}</span></code> part of the name.</p>
+<p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">version</span> <span class="pre">}}</span></code> is left as an intentionally undefined jinja2 variable. It
+is set later in <code class="docutils literal notranslate"><span class="pre">conda_build_config.yaml</span></code>.</p>
+</li>
+<li><p class="first">Before any packaging is done, run the build.sh script:
+<a class="reference external" href="https://github.com/AnacondaRecipes/aggregate/blob/master/clang/build.sh">https://github.com/AnacondaRecipes/aggregate/blob/master/clang/build.sh</a></p>
+<p>In this recipe, values are changed here. Those values are inserted into the
+activate scripts that are installed later.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+CHOST=${macos_machine}
+
+FINAL_CPPFLAGS=&quot;-D_FORTIFY_SOURCE=2 -mmacosx-version-min=${macos_min_version}&quot;
+FINAL_CFLAGS=&quot;-march=core2 -mtune=haswell -mssse3 -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe&quot;
+FINAL_CXXFLAGS=&quot;-march=core2 -mtune=haswell -mssse3 -ftree-vectorize -fPIC -fPIE -fstack-protector-strong -O2 -pipe -stdlib=libc++ -fvisibility-inlines-hidden -std=c++14 -fmessage-length=0&quot;
+# These are the LDFLAGS for when the linker is being called directly, without &quot;-Wl,&quot;
+FINAL_LDFLAGS=&quot;-pie -headerpad_max_install_names&quot;
+# These are the LDFLAGS for when the linker is being driven by a compiler, with &quot;-Wl,&quot;
+FINAL_LDFLAGS_CC=&quot;-Wl,-pie -Wl,-headerpad_max_install_names&quot;
+FINAL_DEBUG_CFLAGS=&quot;-Og -g -Wall -Wextra -fcheck=all -fbacktrace -fimplicit-none -fvar-tracking-assignments&quot;
+FINAL_DEBUG_CXXFLAGS=&quot;-Og -g -Wall -Wextra -fcheck=all -fbacktrace -fimplicit-none -fvar-tracking-assignments&quot;
+FINAL_DEBUG_FFLAGS=&quot;-Og -g -Wall -Wextra -fcheck=all -fbacktrace -fimplicit-none -fvar-tracking-assignments&quot;
+
+find &quot;${RECIPE_DIR}&quot; -name &quot;*activate*.sh&quot; -exec cp {} . \;
+
+find . -name &quot;*activate*.sh&quot; -exec sed -i.bak &quot;s|@CHOST@|${CHOST}|g&quot; &quot;{}&quot; \;
+find . -name &quot;*activate*.sh&quot; -exec sed -i.bak &quot;s|@CPPFLAGS@|${FINAL_CPPFLAGS}|g&quot;             &quot;{}&quot; \;
+find . -name &quot;*activate*.sh&quot; -exec sed -i.bak &quot;s|@CFLAGS@|${FINAL_CFLAGS}|g&quot;                 &quot;{}&quot; \;
+find . -name &quot;*activate*.sh&quot; -exec sed -i.bak &quot;s|@DEBUG_CFLAGS@|${FINAL_DEBUG_CFLAGS}|g&quot;     &quot;{}&quot; \;
+find . -name &quot;*activate*.sh&quot; -exec sed -i.bak &quot;s|@CXXFLAGS@|${FINAL_CXXFLAGS}|g&quot;             &quot;{}&quot; \;
+find . -name &quot;*activate*.sh&quot; -exec sed -i.bak &quot;s|@DEBUG_CXXFLAGS@|${FINAL_DEBUG_CXXFLAGS}|g&quot; &quot;{}&quot; \;
+find . -name &quot;*activate*.sh&quot; -exec sed -i.bak &quot;s|@DEBUG_CXXFLAGS@|${FINAL_DEBUG_CXXFLAGS}|g&quot; &quot;{}&quot; \;
+# find . -name &quot;*activate*.sh&quot; -exec sed -i.bak &quot;s|@FFLAGS@|${FINAL_FFLAGS}|g&quot;                 &quot;{}&quot; \;
+# find . -name &quot;*activate*.sh&quot; -exec sed -i.bak &quot;s|@DEBUG_FFLAGS@|${FINAL_DEBUG_FFLAGS}|g&quot;     &quot;{}&quot; \;
+find . -name &quot;*activate*.sh&quot; -exec sed -i.bak &quot;s|@LDFLAGS@|${FINAL_LDFLAGS}|g&quot;               &quot;{}&quot; \;
+find . -name &quot;*activate*.sh&quot; -exec sed -i.bak &quot;s|@LDFLAGS_CC@|${FINAL_LDFLAGS_CC}|g&quot;         &quot;{}&quot; \;
+find . -name &quot;*activate*.sh.bak&quot; -exec rm &quot;{}&quot; \;
+</pre></div>
+</div>
+</li>
+<li><p class="first">With those changes to the activate scripts in place, it's time to move on to
+installing things. Look back at the clang folder's <code class="docutils literal notranslate"><span class="pre">meta.yaml</span></code>. Here's
+where we change the package name. Notice what comes before the
+<code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">target_platform</span> <span class="pre">}}</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">outputs</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">super_duper_clang_</span><span class="p">{{</span> <span class="n">target_platform</span> <span class="p">}}</span>
+    <span class="n">script</span><span class="p">:</span> <span class="n">install</span><span class="o">-</span><span class="n">clang</span><span class="o">.</span><span class="n">sh</span>
+    <span class="n">requirements</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">clang</span> <span class="p">{{</span> <span class="n">version</span> <span class="p">}}</span>
+</pre></div>
+</div>
+<p>The script reference here is another place you might add customization.
+You'll either change the contents of those install scripts, or change the
+scripts that those install scripts are installing.</p>
+<p>Note that we make the package <code class="docutils literal notranslate"><span class="pre">clang</span></code> in the main material agree in version
+with our output version. This is implicitly the same as the top-level
+recipe. The <code class="docutils literal notranslate"><span class="pre">clang</span></code> package sets no environment variables at all, so it
+may be difficult to use directly.</p>
+</li>
+<li><p class="first">Let's examine the script <code class="docutils literal notranslate"><span class="pre">install-clang.sh</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+set -e -x
+
+CHOST=${macos_machine}
+
+mkdir -p &quot;${PREFIX}&quot;/etc/conda/{de,}activate.d/
+cp &quot;${SRC_DIR}&quot;/activate-clang.sh &quot;${PREFIX}&quot;/etc/conda/activate.d/activate_&quot;${PKG_NAME}&quot;.sh
+cp &quot;${SRC_DIR}&quot;/deactivate-clang.sh &quot;${PREFIX}&quot;/etc/conda/deactivate.d/deactivate_&quot;${PKG_NAME}&quot;.sh
+
+pushd &quot;${PREFIX}&quot;/bin
+  ln -s clang ${CHOST}-clang
+popd
+</pre></div>
+</div>
+<p>Nothing here is too unusual.</p>
+<p>Activate scripts are named according to our package name so they won't
+conflict with other activate scripts.</p>
+<p>The symlink for clang is a clang implementation detail that sets the host
+platform.</p>
+<p>We define <code class="docutils literal notranslate"><span class="pre">macos_machine</span></code> in aggregate's <code class="docutils literal notranslate"><span class="pre">conda_build_config.yaml</span></code>:
+<a class="reference external" href="https://github.com/AnacondaRecipes/aggregate/blob/master/conda_build_config.yaml#L79">https://github.com/AnacondaRecipes/aggregate/blob/master/conda_build_config.yaml#L79</a></p>
+<p>The activate scripts that are being installed are where we actually set the
+environment variables. Remember that these have been modified by build.sh.</p>
+</li>
+<li><p class="first">With any of your desired changes in place, go ahead and build the recipe.</p>
+<p>You should end up with a super_duper_clang_osx-64 package. Or, if you're not
+on macOS and are modifying a different recipe, you should end up with an
+equivalent package for your platform.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="using-your-customized-compiler-package-with-conda-build-3">
+<h2>Using your customized compiler package with conda-build 3<a class="headerlink" href="#using-your-customized-compiler-package-with-conda-build-3" title="제목 주소">¶</a></h2>
+<p>Remember the Jinja2 function, <code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">compiler('c')</span> <span class="pre">}}</span></code>? Here's where that comes
+in. Specific keys in <code class="docutils literal notranslate"><span class="pre">conda_build_config.yaml</span></code> are named for the language
+argument to that jinja2 function. In your <code class="docutils literal notranslate"><span class="pre">conda_build_config.yaml</span></code>, add
+this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c_compiler</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">super_duper_clang</span>
+</pre></div>
+</div>
+<p>Note that we're not adding the <code class="docutils literal notranslate"><span class="pre">target_platform</span></code> part, which is separate. You
+can define that key, too:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">c_compiler</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">super_duper_clang</span>
+<span class="n">target_platform</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">win</span><span class="o">-</span><span class="mi">64</span>
+</pre></div>
+</div>
+<p>With those two keys defined, conda-build will try to use a compiler package
+named <code class="docutils literal notranslate"><span class="pre">super_duper_clang_win-64</span></code>. That package needs to exist for your native
+platform. For example, if you're on macOS, your native platform is <code class="docutils literal notranslate"><span class="pre">osx-64</span></code>.</p>
+<p>The package subdirectory for your native platform is the build platform. The
+build platform and the <code class="docutils literal notranslate"><span class="pre">target_platform</span></code> can be the same, and they are the
+same by default, but they can also be different. When they are different,
+you're cross-compiling.</p>
+<p>If you ever needed a different compiler key for the same language, remember
+that the language key is arbitrary. For example, we might want different
+compilers for Python and for R within one ecosystem. On Windows the Python
+ecosystem uses the Microsoft Visual C compilers, while the R ecosystem uses the
+Mingw compilers.</p>
+<p>Let's start in <code class="docutils literal notranslate"><span class="pre">conda_build_config.yaml</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python_c_compiler</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">vs2015</span>
+<span class="n">r_c_compiler</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">m2w64</span><span class="o">-</span><span class="n">gcc</span>
+<span class="n">target_platform</span><span class="p">:</span>
+  <span class="o">-</span> <span class="n">win</span><span class="o">-</span><span class="mi">64</span>
+</pre></div>
+</div>
+<p>In Python recipes, you'd have:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">requirements</span><span class="p">:</span>
+  <span class="n">build</span><span class="p">:</span>
+    <span class="o">-</span> <span class="p">{{</span> <span class="n">compiler</span><span class="p">(</span><span class="s1">&#39;python_c&#39;</span><span class="p">)</span> <span class="p">}}</span>
+</pre></div>
+</div>
+<p>In R recipes, you'd have:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">requirements</span><span class="p">:</span>
+  <span class="n">build</span><span class="p">:</span>
+    <span class="o">-</span> <span class="p">{{</span> <span class="n">compiler</span><span class="p">(</span><span class="s1">&#39;r_c&#39;</span><span class="p">)</span> <span class="p">}}</span>
+</pre></div>
+</div>
+<p>This example is a little contrived, because the <code class="docutils literal notranslate"><span class="pre">m2w64-gcc_win-64</span></code> package is
+not available. You'd need to create a metapackage <code class="docutils literal notranslate"><span class="pre">m2w64-gcc_win-64</span></code> to
+point at the <code class="docutils literal notranslate"><span class="pre">m2w64-gcc</span></code> package, which does exist on the msys2 channel on
+<a class="reference external" href="https://repo.continuum.io/">repo.continuum.io</a> .</p>
+</div>
+<div class="section" id="build-tool-customizations-and-workarounds-for-common-problems">
+<h2>Build tool customizations and workarounds for common problems<a class="headerlink" href="#build-tool-customizations-and-workarounds-for-common-problems" title="제목 주소">¶</a></h2>
+<p>Our Linux compilation toolchains are somewhat exotic in nature. We refer to them as being
+psuedo-cross compilers. What we mean by this is that the compilers and linkers do not look
+for <cite>system</cite> headers and libraries in the usual places (<code class="docutils literal notranslate"><span class="pre">/usr/include</span></code> and <code class="docutils literal notranslate"><span class="pre">/usr/lib*</span></code>) and
+instead use their own <code class="docutils literal notranslate"><span class="pre">sysroot</span></code> directory. This causes some build tools to misbehave and we've
+either had (or decided it is best) to make certain customizations to some of our build tools in the
+interests of compatibility and also to allow recipes to remain free from these concerns. As
+such, when building conda packages (and indeed when using these toolchains and our libraries at all)
+it is recommended to use conda to install them. Bugs reported when using system-provided versions
+will result in a recommendation to use ours instead. We are actively working to make sure that
+conda-forge also provides these tools.</p>
+<div class="section" id="cmake">
+<h3>CMake<a class="headerlink" href="#cmake" title="제목 주소">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">CMake</span></code> has support for sysroots but no facility to query the compiler for the value of the <code class="docutils literal notranslate"><span class="pre">sysroot</span></code>.
+Any GCC based cross-compiler will happily return this folder. Instead, at worst it will find system
+headers and libraries and your software will not work on older ditributions or on any distribution
+where that library is not installed and at best, it will not look in our <code class="docutils literal notranslate"><span class="pre">sysroot</span></code> directory and
+therefore not find the headers and libraries. This is most frequently seen in libraries that use
+<code class="docutils literal notranslate"><span class="pre">find_library(LIBRT</span> <span class="pre">rt)</span></code> and <code class="docutils literal notranslate"><span class="pre">find_library(PTHREADS</span> <span class="pre">pthreads)</span></code>; ironically neither of these need to be
+linked to explicitly on Linux these days!</p>
+<p>In this instance we feel that <code class="docutils literal notranslate"><span class="pre">CMake</span></code> should query the compilers to determine the <code class="docutils literal notranslate"><span class="pre">sysroot</span></code> by calling
+<code class="docutils literal notranslate"><span class="pre">${CC}</span> <span class="pre">--print-sysroot</span></code>. We have filed an issue with <code class="docutils literal notranslate"><span class="pre">CMake</span></code> at <a class="reference external" href="https://gitlab.kitware.com/cmake/cmake/issues/17483">https://gitlab.kitware.com/cmake/cmake/issues/17483</a>
+to explore this but have not found time to write this feature and make a PR yet. Instead we use a
+<code class="docutils literal notranslate"><span class="pre">CMAKE_TOOLCHAIN_FILE</span></code>. An example of using a toolchain file can be found at
+<a class="reference external" href="https://github.com/AnacondaRecipes/libnetcdf-feedstock/tree/master/recipe">https://github.com/AnacondaRecipes/libnetcdf-feedstock/tree/master/recipe</a></p>
+</div>
+<div class="section" id="pkg-config">
+<h3>pkg-config<a class="headerlink" href="#pkg-config" title="제목 주소">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">pkg-config</span></code> will not, by default look in <code class="docutils literal notranslate"><span class="pre">${CONDA_PREFIX}</span></code>. In the past, to correct this we had been setting
+various environment variables in each <code class="docutils literal notranslate"><span class="pre">build.sh</span></code>. This was brittle and messy so instead we've consolidated this
+into <code class="docutils literal notranslate"><span class="pre">pkg-config</span></code>. It is now a bash script that sets the appropriate variables before calling the real
+<code class="docutils literal notranslate"><span class="pre">pkg-config</span></code> executable and returning the result. The code for this can be seen at
+<a class="reference external" href="https://github.com/AnacondaRecipes/pkg-config-feedstock/blob/master/recipe/pkg-config">https://github.com/AnacondaRecipes/pkg-config-feedstock/blob/master/recipe/pkg-config</a></p>
+</div>
+<div class="section" id="qt-macos">
+<h3>Qt (macOS)<a class="headerlink" href="#qt-macos" title="제목 주소">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Anaconda</span> <span class="pre">Distribution</span></code> does not require installing <code class="docutils literal notranslate"><span class="pre">Xcode</span></code>. The distribution can (almost) be built from
+source without it. Unfortunately <code class="docutils literal notranslate"><span class="pre">Qt</span></code> hard-codes the use of <code class="docutils literal notranslate"><span class="pre">/usr/bin/xcodebuild</span></code> and <code class="docutils literal notranslate"><span class="pre">/usr/bin/xcrun</span></code>.
+We have changed this in patches to the source for our <code class="docutils literal notranslate"><span class="pre">Qt</span></code> packages (<a class="reference external" href="https://github.com/AnacondaRecipes/qt-feedstock/blob/master/recipe/0001-qtwebengine-allow-any-xcblah-in-PATH.patch">https://github.com/AnacondaRecipes/qt-feedstock/blob/master/recipe/0001-qtwebengine-allow-any-xcblah-in-PATH.patch</a>
+and <a class="reference external" href="https://github.com/AnacondaRecipes/qt-feedstock/blob/master/recipe/0011-osx-allow-any-xcrun-in-PATH.patch">https://github.com/AnacondaRecipes/qt-feedstock/blob/master/recipe/0011-osx-allow-any-xcrun-in-PATH.patch</a>)
+so that <code class="docutils literal notranslate"><span class="pre">xcodebuild</span></code> and <code class="docutils literal notranslate"><span class="pre">xcrun</span></code> are used instead (and <code class="docutils literal notranslate"><span class="pre">PATH</span></code> lookup finds them). For this to work, we
+have created fake <code class="docutils literal notranslate"><span class="pre">xcodebuild</span></code> and <code class="docutils literal notranslate"><span class="pre">xcrun</span></code> scripts (<a class="reference external" href="https://github.com/AnacondaRecipes/qt-feedstock/blob/master/recipe/xcodebuild">https://github.com/AnacondaRecipes/qt-feedstock/blob/master/recipe/xcodebuild</a> and <a class="reference external" href="https://github.com/AnacondaRecipes/qt-feedstock/blob/master/recipe/xcrun">https://github.com/AnacondaRecipes/qt-feedstock/blob/master/recipe/xcrun</a>)
+that return values needed to achieve compatibiltiy with the <code class="docutils literal notranslate"><span class="pre">Anaconda</span> <span class="pre">Distribution</span></code>. These scripts cannot
+live in <code class="docutils literal notranslate"><span class="pre">${CONDA_PREFIX}/bin</span></code> without risking disruption to <code class="docutils literal notranslate"><span class="pre">Xcode</span></code> users, therefore they are installed
+in <code class="docutils literal notranslate"><span class="pre">${CONDA_PREFIX}/bin/xc-avoidance</span></code>. To use them you should add this to <code class="docutils literal notranslate"><span class="pre">PATH</span></code> in <code class="docutils literal notranslate"><span class="pre">build.sh</span></code>. An
+example of this can be seen at <a class="reference external" href="https://github.com/AnacondaRecipes/pyqt-feedstock/blob/master/recipe/build.sh#L8">https://github.com/AnacondaRecipes/pyqt-feedstock/blob/master/recipe/build.sh#L8</a></p>
+</div>
+<div class="section" id="libtool">
+<h3>libtool<a class="headerlink" href="#libtool" title="제목 주소">¶</a></h3>
+<p>There is a feature in various linkers which is most commonly called 'as-needed'. When the linker detects that
+no symbols are referenced in a consumer executable (exe) or dynamically shared objects (DSO) it elides this
+<code class="docutils literal notranslate"><span class="pre">DT_NEEDED</span></code> entry from the <code class="docutils literal notranslate"><span class="pre">ELF</span> <span class="pre">dynamic</span> <span class="pre">section</span></code>. We do this so that our software loads more quickly. It
+also leads to the possibility of implementing a new feature in <code class="docutils literal notranslate"><span class="pre">conda-build</span></code> whereby it would warn when a
+'library' package (identified via some heuristics, a <code class="docutils literal notranslate"><span class="pre">lib</span></code> prefix perhaps; existence of DSOs?) ends up in
+the runtime requirements but is not actually used in any of the exes or DSOs. This would allow us to consider
+these as candidates for removal thus making the package less heavy-weight. For the curious, there's a function
+in <code class="docutils literal notranslate"><span class="pre">conda-build</span></code> called <code class="docutils literal notranslate"><span class="pre">check_overlinking</span></code> and the original intention for this function was to do this but
+it ended up checking for the opposite (worse!) problem of 'underlinking'. This we define as missing
+dependencies, which happens frequently when something gets installed in the <code class="docutils literal notranslate"><span class="pre">host</span> <span class="pre">prefix</span></code> through a
+transitive dependency and is therefore not listed as a direct run dependency despite being directly linked to
+some exe(s) and/or DSO(s) in the package (build systems are sometimes 'greedy' linking to whatever they can
+find). We denote this as 'worse' because when someone installs these two packages (3 including the dependency)
+and then removes (and cleans/prunes the environment) the one that directly depends upon the third package, the
+third package will also be removed because conda has no idea your package needs it and it will no longer load.</p>
+<p>Unfortunately in most linkers the flag used to enable this (<code class="docutils literal notranslate"><span class="pre">--as-needed</span></code>) only takes effect for libraries
+that appear after it on the command-line. We have patched our <code class="docutils literal notranslate"><span class="pre">libtool</span></code> package (with a modified patch
+sourced from Gentoo) so this flag, if found, is moved to before any libraries in this linker command-line.
+The patch can be found at <a class="reference external" href="https://github.com/AnacondaRecipes/libtool-feedstock/blob/master/recipe/0001-link-as-needed.patch">https://github.com/AnacondaRecipes/libtool-feedstock/blob/master/recipe/0001-link-as-needed.patch</a></p>
+<p>To ensure we take advantage of this flag, it is necessary to run <code class="docutils literal notranslate"><span class="pre">autoreconf</span> <span class="pre">-vfi</span></code> so that the <code class="docutils literal notranslate"><span class="pre">libtool</span></code>
+script is regenerated. Before running <code class="docutils literal notranslate"><span class="pre">configure</span></code>. For this you will need to add some dependencies to
+<code class="docutils literal notranslate"><span class="pre">meta.yaml</span></code>: <code class="docutils literal notranslate"><span class="pre">libtool</span></code>, <code class="docutils literal notranslate"><span class="pre">autoconf</span></code>, <code class="docutils literal notranslate"><span class="pre">automake</span></code>, <code class="docutils literal notranslate"><span class="pre">make</span></code> and occasionallty for good measure:
+<code class="docutils literal notranslate"><span class="pre">pkg-config</span></code> and <code class="docutils literal notranslate"><span class="pre">bison</span></code>, depending on whether the package needs them or not.</p>
+</div>
+<div class="section" id="rpaths-specifically-rpath-link">
+<h3>RPATHs (specifically rpath-link)<a class="headerlink" href="#rpaths-specifically-rpath-link" title="제목 주소">¶</a></h3>
+<p>On Linux, transitive DSOs are not searched for by the static linker in any <code class="docutils literal notranslate"><span class="pre">rpath</span></code> entries. Instead, for the
+linker to find these DSOs, it needs prompting by adding <code class="docutils literal notranslate"><span class="pre">-Wl,-rpath-link,$PREFIX/lib</span></code> to <code class="docutils literal notranslate"><span class="pre">LDFLAGS</span></code>. In the
+future we may add this to the Linux compiler activation script. These transitive DSOs are not added as <code class="docutils literal notranslate"><span class="pre">DT_NEEDED</span></code>
+entries in the top-level DSO, they are inspected by the static linker for symbol resolution purposes only so it
+is generally safe to add this flag.</p>
+</div>
+<div class="section" id="cdt-packages">
+<h3>CDT packages<a class="headerlink" href="#cdt-packages" title="제목 주소">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">CDT</span></code> packages are an 'Anaconda Distribution' invention. They consist of repackaged 'CentOS6' packages for libraries
+such as the <code class="docutils literal notranslate"><span class="pre">X11</span></code> and <code class="docutils literal notranslate"><span class="pre">OpenGL</span></code> stacks, unpacked into our compilers inbuilt sysroot. These allow us to link to these
+system libraries in a way that pins the compatibility level to that of 'CentOS6'. 'conda-forge' provide their own
+<code class="docutils literal notranslate"><span class="pre">X11</span></code> libraries and what to do with <code class="docutils literal notranslate"><span class="pre">OpenGL</span></code> is currently a subject of discussion. We plan to use meta-packages and
+possibly mutex packages to enable sharing recipes and avoiding conflicts between <code class="docutils literal notranslate"><span class="pre">CDT</span></code> <code class="docutils literal notranslate"><span class="pre">X11</span></code> packages and <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code>
+<code class="docutils literal notranslate"><span class="pre">X11</span></code> packages.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="add-win-start-menu-items.html" class="btn btn-neutral float-right" title="Adding Windows Start menu items" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="use-shared-libraries.html" class="btn btn-neutral" title="Using shared libraries" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Anaconda, Inc.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-27761864-11', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+
+</script>
+
+
+</body>
+</html>
